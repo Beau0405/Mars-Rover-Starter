@@ -48,7 +48,7 @@ describe("Rover class", function() {
     let message = new Message("A new command!", commands);
     let rover = new Rover(message.commands.value);
     let response = rover.receiveMessage(message);
-    expect(response.results[0].completed).toEqual("true");
+    expect(response.results[0].completed).toEqual(true);
     expect(rover.mode).toEqual("LOW_POWER");
     
   });
@@ -58,7 +58,7 @@ describe("Rover class", function() {
     let message = new Message("New commands",commands);
     let rover = new Rover(message.commands.value);
     let response = rover.receiveMessage(message);
-    expect(response.results[2].completed).toEqual("false");
+    expect(response.results[2].completed).toEqual(false);
     expect(rover.position).toEqual(800);
      
   });

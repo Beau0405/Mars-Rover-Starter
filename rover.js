@@ -17,27 +17,22 @@ class Rover {
        
         if(message.commands[i].commandType === "MOVE") {
           if(this.mode === "LOW_POWER") {
-            response.results.push({completed: "false"});
+            response.results.push({completed: false});
           }else{
             response.results.push({completed: true});
             this.position = message.commands[i].value;
           };
         }else if(message.commands[i].commandType === "MODE_CHANGE") {
-          response.results.push({completed: "true"});
-          this.mode = message. commands[i].value;
-        }else if(message.commands[i].commandType === "STATUS_CHECK") {
-          response.results.push({completed: "true", roverStatus: {mode: this.mode, generatorWatts: this.generatorWatts, position: this.position}});
+          response.results.push({completed: true});
           this.mode = message.commands[i].value;
+        }else if(message.commands[i].commandType === "STATUS_CHECK") {
+          response.results.push({completed: true, roverStatus: {mode: this.mode, generatorWatts: this.generatorWatts, position: this.position}});
         } else {
-          response.results.push({completed: "false"});
+          response.results.push({completed: false});
         }
       };
-  
       return response;
     };
   };
   
-  
-
-
 module.exports = Rover;
